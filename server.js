@@ -32,6 +32,8 @@ const vehiclesRouter = require('./routes/vehicles');
 app.use('/api/vehicles', vehiclesRouter);
 const authRouter = require('./routes/auth');
 app.use('/api/auth', authRouter);
+const tripsRouter = require('./routes/trips');
+app.use('/api/trips', tripsRouter);
 // Status
 app.get('/', (req, res) => {
   res.json({ system: 'Control Tower', company: 'Autosped AS', status: 'running', version: '1.0.0' });
