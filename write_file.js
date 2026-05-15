@@ -1,4 +1,6 @@
-const express = require('express');
+const fs = require('fs');
+
+const server = `const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
 require('dotenv').config();
@@ -50,5 +52,9 @@ app.get('/health', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Control Tower kjører på http://localhost:${PORT}`);
+  console.log(\`Control Tower kjører på http://localhost:\${PORT}\`);
 });
+`;
+
+fs.writeFileSync('server.js', server);
+console.log('server.js skrevet!');
