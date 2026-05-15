@@ -1,0 +1,3 @@
+const jwt=require('jsonwebtoken');
+
+const authenticate=(req,res,next)=>{const h=req.headers['authorization'];const t=h&&h.split(' ')[1];if(!t)return res.status(401).json({success:false,error:'Ingen token'});try{const d=jwt.verify(t,process.env.JWT_SECRET);req.user=d;next();}catch(e){return res.status(401).json({success:false,error:'Ugyldig token'});}};const authorize=(...roles)=>(req,res,next)=>{if(!req.user)return res.status(401).json({success:false,error:'Ikke autentisert'});if(!roles.includes(req.user.role))return res.status(403).json({success:false,error:'Ikke tilgang'});next();};module.exports={authenticate,authorize};
