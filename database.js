@@ -253,11 +253,9 @@ async function createTables() {
     console.log('✅ co2_routes OK');
 
     console.log('\n🎉 Alle 14 tabeller er klare!');
-    process.exit(0);
   } catch (err) {
     console.error('FEIL:', err.message);
-    process.exit(1);
   }
 }
 
-createTables();
+module.exports = { pool, createTables };
